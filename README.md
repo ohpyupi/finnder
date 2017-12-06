@@ -12,7 +12,7 @@ app/ // A root directory for the front-end SPA application
 └── app.module.js // a main entry module file (being watched by webpack).
 dist/ // A directory to serve static assets such as images, files, and javascript files.
 ├── info.js // A script to display this project information on index.html (You can disable it by deleting the script on index.html).
-└──	app.js // A main script file that is a compiled version of app/app.module.js through webpack. 
+└── app.js // A main script file that is a compiled version of app/app.module.js through webpack. 
 ```
 
 ## Commands

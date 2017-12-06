@@ -1,5 +1,5 @@
 {
-  "name": "skeleton.node",
+  "name": "fishlist",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,15 +16,11 @@
     "dev": "./node_modules/concurrently/src/main.js \"npm run nodemon\" \"npm run watch\""
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ohpyupi/skeleton.react.git"
   },
   "author": "ohpyupi@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ohpyupi/skeleton.react/issues"
   },
-  "homepage": "https://github.com/ohpyupi/skeleton.react#readme",
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
