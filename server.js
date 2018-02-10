@@ -8,6 +8,8 @@ const twilio = require('twilio');
 const MessagingResponse = twilio.twiml.MessagingResponse;
 const client = twilio(VAR.TWILIO_ACCOUNT_SID, VAR.TWILIO_AUTH_TOKEN);
 
+const buyFish = require('./src/buyFish');
+
 mongoose.connect(VAR.MONGO_DB_URI);
 const db = mongoose.connection;
 db.on('open', ()=>{
@@ -30,12 +32,15 @@ app.post('/sms', (req, res) => {
 
   client.messages(req.body.SmsMessageSid)
     .fetch()
-    .then((result) => console.log(result));
+    .then((result) => {
+      const message = result.body.toLowerCase();
+      const buyRegx = /buy/;
+      console.log(message);
 
-  twiml.message('The Robots are coming! Head for the hills!');
-
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
+      if(buyRegx.test(message)) {
+        buyFish(message, res);
+      }
+    });
 });
 
 app.use((err, req, res, next)=>{
