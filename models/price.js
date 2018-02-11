@@ -12,6 +12,7 @@ const Schema = mongoose.Schema({
   mean: Number,
   min: Number,
   max: Number,
+  dateEntered: Date,
 });
 
 const Model = mongoose.model('Price', Schema);

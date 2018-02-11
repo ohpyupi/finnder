@@ -10,6 +10,7 @@ const Schema = mongoose.Schema({
 	amount: String,
   phoneNumber: String,
 	fishName: String,
+  dateEntered: Date,
 }); 
 
 const Model = mongoose.model('Sell', Schema);
