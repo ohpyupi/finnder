@@ -7,8 +7,10 @@ const twilio = require('twilio');
 const MessagingResponse = twilio.twiml.MessagingResponse;
 const client = twilio(VAR.TWILIO_ACCOUNT_SID, VAR.TWILIO_AUTH_TOKEN);
 
-const buyFish = require('./src/buyFish');
 const deployCron = require('./crons');
+const buyFish = require('./src/buyFish');
+const buyList = require('./src/buyList');
+const price = require('./src/price');
 
 const db = require('./config/db.js');
 const shcedules = deployCron();
@@ -30,12 +32,25 @@ app.post('/sms', (req, res) => {
     .fetch()
     .then((result) => {
       const message = result.body.toLowerCase();
-      const buyRegx = /buy/;
+      const buyRegx = /\bbuy\b/;
+      const buyListRegx = /\bbuylist\b/;
+      const priceRegx = /\bprice\b/;
       console.log(message);
 
       if (buyRegx.test(message)) {
         console.log('in buyFish');
         buyFish(req.body, message, res);
+      } else if(buyListRegx.test(message)) {
+        console.log('in buyList');
+        buyList(message, res);
+      } else if(priceRegx.test(message)) {
+        console.log('in price');
+        price(message, res);
+      } else {
+        // Default response... possibly add menu of features here.
+        twiml.message('Sorry i don\'t understand...');
+        res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.end(twiml.toString());
       }
     });
 });
