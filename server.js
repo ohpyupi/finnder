@@ -38,7 +38,7 @@ app.post('/sms', (req, res) => {
       console.log(message);
 
       if(buyRegx.test(message)) {
-        buyFish(message, res);
+        buyFish(req.body, message, res);
       }
     });
 });
