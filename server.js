@@ -38,8 +38,10 @@ app.post('/sms', (req, res) => {
       if(buyRegx.test(message)) {
         console.log('in buyFish');
         buyFish(req.body, message, res);
-      } else if(buyListRegx) {
+      } else if(buyRegx.test(message)) {
         buyList(message, res);
+      } else if(priceRegx.test(message)) {
+        price(message, res)
       }
     });
 });
