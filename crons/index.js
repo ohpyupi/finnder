@@ -5,7 +5,8 @@ module.exports = deployCron;
 
 function deployCron() {
   let rule = new schedule.RecurrenceRule();
-  rule.minute = 0;
+  rule.second = 0;
+  //rule.minute = 0;
   
   let fishPriceJob = schedule.scheduleJob(rule, () => {
     updateFishPriceDocuments()

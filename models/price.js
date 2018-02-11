@@ -6,6 +6,7 @@ const Schema = mongoose.Schema({
   mean: Number,
   min: Number,
   max: Number,
+  standardDeviation: Number,
   dateEntered: {type: Date, default: Date.now},
 });
 

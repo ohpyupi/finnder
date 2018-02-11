@@ -36,6 +36,7 @@ function updateFishPriceDocuments() {
 					max: ss.max(amountArr),
 					mean: (ss.sum(amountArr)) / docs.length,
 					median: ss.median(amountArr),
+          standardDeviation: ss.standardDeviation(amountArr),
 				};
 			});
 
@@ -57,5 +58,3 @@ function updateFishPriceDocuments() {
 		.catch(reject);
 	});
 }
-
-
