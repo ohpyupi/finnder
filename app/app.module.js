@@ -3,7 +3,7 @@
     let fonts = ['Nunito', 'Merriweather', 'Titillium Web', 'Cabin', 'Crimson Text'];
     WebFont.load({
       google: {
-        families: fonts, 
+        families: fonts,
       }
     });
     let madness = setInterval(() => {
@@ -11,7 +11,7 @@
       document.body.style.fontFamily = fonts[index];
     }, 100);
     let button = document.createElement('button');
-    button.innerHTML = "Stop this madness!";
+    button.innerHTML = 'Stop this madness!';
     button.style.marginTop = '30px';
     button.addEventListener('click', e => {
       clearInterval(madness);
@@ -27,4 +27,4 @@ function loadScript(src, callback) {
   s.type = 'text/javascript';
   document.body.appendChild(s);
   s.onload = e => callback(e);
-};
+}

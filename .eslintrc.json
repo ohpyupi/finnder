@@ -1,0 +1,18 @@
+{
+	"extends": "node-style-guide",
+	"env": {
+		"node": true,
+		"mocha": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"modules": true
+		}
+	},
+	"rules": {
+    "space-after-keywords": "off",
+    "keyword-spacing": [2, {"before": true, "after": true}]
+  }	
+}

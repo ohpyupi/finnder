@@ -14,13 +14,15 @@ function updateFishPriceDocuments() {
 		.then((docs) => {
 		// Collect all available values for "fishName" in an array.
 		let fishNameArr = docs.reduce((sum, doc) => {
-			if (sum.indexOf(doc.fishName) > -1) return sum;
+			if (sum.indexOf(doc.fishName) > -1) {
+        return sum;
+      }
 			return [...sum, doc.fishName];
 		}, []);
 
 		// Create an array containing promise instances to query "Sell" collection.
 		let promiseArr = fishNameArr.map(fishName => {
-			return Sell.find({fishName});	
+			return Sell.find({fishName});
 		});
 
 		return Promise.all(promiseArr);
@@ -29,7 +31,7 @@ function updateFishPriceDocuments() {
 
 			// Create a query to make price documents.
 			let queryArr = docsArr.map(docs => {
-				let amountArr = docs.map(doc => numeral(doc.amount).value());	
+				let amountArr = docs.map(doc => numeral(doc.amount).value());
 				return {
 					fishName: docs[0].fishName,
 					min: ss.min(amountArr),
@@ -43,10 +45,10 @@ function updateFishPriceDocuments() {
 			// Create an array containing promise instances to add docs to "Price" collection
 			let promiseArr = queryArr.map(query => {
 				return Price.findOneAndUpdate({
-					fishName: query.fishName,	
+					fishName: query.fishName,
 				}, query, {
 					upsert: true,
-				});	
+				});
 			});
 
 			return Promise.all(promiseArr);

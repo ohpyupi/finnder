@@ -33,7 +33,7 @@ app.post('/sms', (req, res) => {
       const buyRegx = /buy/;
       console.log(message);
 
-      if(buyRegx.test(message)) {
+      if (buyRegx.test(message)) {
         console.log('in buyFish');
         buyFish(req.body, message, res);
       }
