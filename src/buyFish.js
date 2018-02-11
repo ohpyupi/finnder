@@ -4,10 +4,14 @@ const MessagingResponse = twilio.twiml.MessagingResponse;
 
 module.exports = function(meta, message, res) {
   const twiml = new MessagingResponse();
-  const fishYouWant = /buy (.*)/.exec(message)[1];
+  const textString = message.split(' ');
+  const fishYouWant = textString[1] || null;
+  const fishAmount = textString[2] || null;
+
+  console.log(textString);
 
   DB.Buy.create({
-    amount: '',
+    amount: fishAmount,
     location: {
       city: meta.FromCity,
       state: meta.FromState,
@@ -16,7 +20,7 @@ module.exports = function(meta, message, res) {
     },
     phoneNumber: meta.From,
     fishName: fishYouWant,
-  }, (err, res) => {
+  }, (err, result) => {
     if(err) return console.error(err);
     twiml.message(`Your record for ${fishYouWant} has been made!`);
 

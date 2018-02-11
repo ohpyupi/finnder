@@ -28,8 +28,6 @@ app.get('*', (req, res, next)=>{
 });
 
 app.post('/sms', (req, res) => {
-  const twiml = new MessagingResponse();
-
   client.messages(req.body.SmsMessageSid)
     .fetch()
     .then((result) => {
@@ -38,6 +36,7 @@ app.post('/sms', (req, res) => {
       console.log(message);
 
       if(buyRegx.test(message)) {
+        console.log('in buyFish');
         buyFish(req.body, message, res);
       }
     });
