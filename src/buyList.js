@@ -16,7 +16,7 @@ module.exports = function(message, res) {
       messageString.push(`Past ${fishName} records...`);
 
       fishes.forEach((fish) => {
-        messageString.push(`${fish.amount} from ${fish.location.city}`);
+        messageString.push(`${fish.amount} from ${fish.location.city}, ${fish.location.state || ''} ${fish.location.country}`);
       });
 
       twiml.message(messageString.join("\n"));

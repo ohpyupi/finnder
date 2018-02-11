@@ -20,6 +20,7 @@ module.exports = function(meta, message, res) {
     },
     phoneNumber: meta.From,
     fishName: fishYouWant,
+    dateEntered: new Date()
   }, (err, result) => {
     if(err) return console.error(err);
     twiml.message(`Your record for ${fishYouWant} has been made!`);
