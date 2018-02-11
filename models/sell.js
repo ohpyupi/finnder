@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema({
-	location: String,
+	location: {
+    city: String,
+    state: String,
+    country: String,
+    zip: String,
+  },
 	amount: String,
   phoneNumber: String,
 	fishName: String,
