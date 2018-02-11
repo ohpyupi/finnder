@@ -55,7 +55,7 @@ function updateFishPriceDocuments() {
 		})
 		.then(docs => {
 			console.log(`* Successfully updated fish price documents.`);
-			resolve();
+			resolve(docs);
 		})
 		.catch(reject);
 	});

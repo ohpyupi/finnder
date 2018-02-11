@@ -13,7 +13,8 @@
     "nodemon": "./node_modules/nodemon/bin/nodemon.js ./server.js",
     "watch": "./node_modules/webpack/bin/webpack.js --watch --progress",
     "build": "./node_modules/webpack/bin/webpack.js --progress",
-    "dev": "./node_modules/concurrently/src/main.js \"npm run nodemon\" \"npm run watch\""
+    "dev": "./node_modules/concurrently/src/main.js \"npm run nodemon\" \"npm run watch\"",
+    "test": "./node_modules/.bin/mocha \"./{,!(node_modules)/**/}*.spec.js\""
   },
   "repository": {},
   "author": "ohpyupi@gmail.com",
