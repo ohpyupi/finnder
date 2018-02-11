@@ -10,7 +10,7 @@ const Schema = mongoose.Schema({
 	amount: String,
 	phoneNumber: String,
 	fishName: String,
-  dateEntered: Date,
+  dateEntered: { type: Date, default: Date.now },
 }); 
 
 const Model = mongoose.model('Buy', Schema);

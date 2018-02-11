@@ -9,9 +9,10 @@ const client = twilio(VAR.TWILIO_ACCOUNT_SID, VAR.TWILIO_AUTH_TOKEN);
 
 const buyFish = require('./src/buyFish');
 const buyList = require('./src/buyList');
+const deployCron = require('./crons');
 
 const db = require('./config/db.js');
-
+const shcedules = deployCron();
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'dist')));
+
 
 app.get('*', (req, res, next)=>{
 	res.sendFile(path.join(__dirname, 'index.html'));

@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema({
-	location: {
-    city: String,
-    state: String,
-    country: String,
-    zip: String,
-  },
   fishName: String,
   median: Number,
   mean: Number,
   min: Number,
   max: Number,
-  dateEntered: Date,
+  dateEntered: {type: Date, default: Date.now},
 });
 
 const Model = mongoose.model('Price', Schema);
