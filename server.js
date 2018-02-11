@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const VAR = require('./config/variables');
 const twilio = require('twilio');
 const MessagingResponse = twilio.twiml.MessagingResponse;
@@ -10,11 +9,8 @@ const client = twilio(VAR.TWILIO_ACCOUNT_SID, VAR.TWILIO_AUTH_TOKEN);
 
 const buyFish = require('./src/buyFish');
 
-mongoose.connect(VAR.MONGO_DB_URI);
-const db = mongoose.connection;
-db.on('open', ()=>{
-  console.log('Connected to MongoDB.');
-});
+const db = require('./config/db.js');
+
 
 const app = express();
 
